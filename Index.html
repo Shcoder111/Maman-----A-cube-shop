@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaMan — Online Shopping</title>
+<link rel="stylesheet" href="Style.css">
+<head>
+    <title>My Website</title>
+    <link rel="icon" type="image/png" href="Untitled.png">
+</head>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo" onclick="navigate('home')">
+        MaMan<span>.shop</span>
+    </div>
+
+    <div class="location" onclick="setAddress()">
+        📍
+        <div>
+            <small>Deliver to</small>
+            <strong id="addressText">India</strong>
+        </div>
+    </div>
+
+    <div class="search">
+        <select id="searchCategory">
+            <option value="all">All</option>
+            <option value="2X2">2X2</option>
+            <option value="3X3">3X3</option>
+            <option value="4X4">4X4</option>
+            <option value="big-cubes">Big Cubes</option>
+            <option value="shape-mods">Shape Mods</option>
+            <option value="lubes">Lubricants</option>
+        </select>
+
+        <input
+            id="searchInput"
+            type="search"
+            placeholder="Search MaMan"
+        >
+
+        <button onclick="searchProducts()">🔍</button>
+    </div>
+
+    <div class="header-item" onclick="navigate('account')">
+        <small id="accountGreeting">Hello, MaMan User</small>
+        <strong>Account & Lists</strong>
+    </div>
+
+    <div class="header-item" onclick="navigate('orders')">
+        <small>Returns</small>
+        <strong>& Orders</strong>
+    </div>
+
+    <div class="cart-button" onclick="openCart()">
+        🛒
+        <span id="cartCount" class="cart-count">0</span>
+    </div>
+</header>
+
+<!-- NAVIGATION -->
+
+<nav class="nav">
+    <div onclick="navigate('home')">☰ All</div>
+    <div onclick="filterCategory('2X2')">2X2</div>
+    <div onclick="filterCategory('3X3')">3X3</div>
+    <div onclick="filterCategory('4X4')">4X4</div>
+    <div onclick="filterCategory('big-cubes')">Big Cubes</div>
+    <div onclick="filterCategory('shape-mods')">Shape Mods</div>
+    <div onclick="filterCategory('lubes')">Lubricants</div>
+    <div onclick="navigate('wishlist')">Wishlist</div>
+    <div onclick="navigate('orders')">Customer Service</div>
+</nav>
+
+<!-- HOME -->
+
+<main id="homePage" class="page">
+
+    <section class="hero">
+        <div class="hero-card">
+            <h1>Welcome to MaMan</h1>
+
+            <p>
+                Shop
+                <span style="color:#e31837;font-weight:bold;">
+                    3X3, 2X2, 4X4
+                </span>
+                and more speed cubes.
+            </p>
+
+            <button
+                class="primary"
+                onclick="filterCategory('3X3')"
+            >
+                Shop 3X3 Cubes
+            </button>
+        </div>
+    </section>
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>Shop by Category</h2>
+        </div>
+
+        <div class="categories">
+
+            <div
+                class="category"
+                onclick="filterCategory('3X3')"
+            >
+                <div class="category-icon">
+                    <img
+                        src="https://www.bing.com/th/id/OGC.f7b6747017eeab17151d333f584eeb83?r=0&o=7&pid=1.7&rm=3&rurl=https%3a%2f%2fwww.picgifs.com%2fgraphics%2fr%2frubiks-cube%2fanimaatjes-rubiks-cube-7217468.gif&ehk=VdKQfOrpmBtWQv8Q92jiBuOI8zz70ScJ%2bsGPAt%2b3QtU%3d"
+                        alt="3X3 Cube"
+                    >
+                </div>
+                <strong>3X3</strong>
+            </div>
+
+            <div
+                class="category"
+                onclick="filterCategory('4X4')"
+            >
+                <div class="category-icon">
+                    <img
+                        src="https://www.bing.com/th/id/OGC.657daef256e4198293c250a9657a1fc4?r=0&o=7&pid=1.7&rm=3&rurl=https%3a%2f%2fmedia.giphy.com%2fmedia%2fl2QZVA745TfLDdq4U%2fgiphy.gif&ehk=l9Bmt73RSakQP%2b4nbGs66%2feeh3C6de33C3Yg4YTXStA%3d"
+                        alt="4X4 Cube"
+                    >
+                </div>
+                <strong>4X4</strong>
+            </div>
+
+            <div
+                class="category"
+                onclick="filterCategory('lubes')"
+            >
+                <div class="category-icon">
+                    <img
+                        src="https://speedcubeshop.com/cdn/shop/files/soup-lube-ramen-scented-lubricant-5ml.jpg?v=1765326672&width=100"
+                        alt="Lubricant"
+                    >
+                </div>
+                <strong>Lubricants</strong>
+            </div>
+
+            <div
+                class="category"
+                onclick="filterCategory('big-cubes')"
+            >
+                <div class="category-icon">
+                    <img
+                        src="https://media.tenor.com/LZCyHEueSc4AAAAM/9x9rubikcubeclick-rubik-cube.gif"
+                        alt="Big Cube"
+                    >
+                </div>
+                <strong>Big Cubes</strong>
+            </div>
+
+            <div
+                class="category"
+                onclick="filterCategory('shape-mods')"
+            >
+                <div class="category-icon">
+                    <img
+                        src="https://speedcubeshop.com/cdn/shop/files/moyu-mirror-v2-3.jpg?v=1771619519&width=100"
+                        alt="Shape Mod"
+                    >
+                </div>
+                <strong>Shape Mods</strong>
+            </div>
+
+            <div
+                class="category"
+                onclick="filterCategory('2X2')"
+            >
+                <div class="category-icon">
+                    <img
+                        src="https://speedcubeshop.com/cdn/shop/files/qiyi-2x2-glow-in-the-dark-black.gif?v=1771619496&width=100"
+                        alt="2X2 Cube"
+                    >
+                </div>
+                <strong>2X2</strong>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="deal" onclick="showDeals()">
+        <h2>🔥 Today's Deals</h2>
+        <p>
+            Limited-time offers on selected products.
+            Click to view deals.
+        </p>
+    </section>
+
+    <section class="products">
+
+        <div class="section-head">
+
+            <h2 id="productHeading">
+                Popular Products
+            </h2>
+
+            <select
+                class="sort"
+                id="sortSelect"
+                onchange="sortProducts()"
+            >
+                <option value="featured">Featured</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+                <option value="rating">Customer Rating</option>
+                <option value="discount">Discount</option>
+            </select>
+
+        </div>
+
+        <div
+            id="productGrid"
+            class="product-grid"
+        ></div>
+
+    </section>
+</main>
+
+<!-- PRODUCT DETAILS -->
+
+<main id="productPage" class="page hidden">
+
+    <div class="product-details-container">
+
+        <button
+            class="back-button"
+            onclick="navigate('home')"
+        >
+            ← Back to Shopping
+        </button>
+
+        <div id="productDetails"></div>
+
+    </div>
+</main>
+
+<!-- ACCOUNT -->
+
+<main id="accountPage" class="account-page page hidden">
+
+    <div class="account-wrapper">
+
+        <h1 class="page-title">Your Account</h1>
+
+        <section class="account-profile">
+
+            <div id="avatar" class="avatar">
+                M
+            </div>
+
+            <div>
+
+                <h1 id="accountName">
+                    MaMan User
+                </h1>
+
+                <p id="accountEmail">
+                    user@maman.shop
+                </p>
+
+                <span class="signed-badge">
+                    ✓ Signed in
+                </span>
+
+            </div>
+
+        </section>
+
+        <section class="account-grid">
+
+            <div
+                class="account-box"
+                onclick="navigate('orders')"
+            >
+                <div class="account-icon">📦</div>
+                <h3>Your Orders</h3>
+                <p>
+                    Track, return or view your previous orders.
+                </p>
+            </div>
+
+            <div
+                class="account-box"
+                onclick="navigate('wishlist')"
+            >
+                <div class="account-icon">❤️</div>
+                <h3>Your Wishlist</h3>
+                <p>
+                    View products you have saved for later.
+                </p>
+            </div>
+
+            <div
+                class="account-box"
+                onclick="setAddress()"
+            >
+                <div class="account-icon">📍</div>
+                <h3>Your Addresses</h3>
+                <p>
+                    Manage your delivery location.
+                </p>
+            </div>
+
+            <div
+                class="account-box"
+                onclick="navigate('home')"
+            >
+                <div class="account-icon">🛍️</div>
+                <h3>Continue Shopping</h3>
+                <p>
+                    Return to MaMan and discover products.
+                </p>
+            </div>
+
+        </section>
+
+        <section class="account-details">
+
+            <h2>Account Details</h2>
+
+            <div class="detail">
+                <span class="detail-label">Name</span>
+                <span
+                    id="detailName"
+                    class="detail-value"
+                >
+                    MaMan User
+                </span>
+            </div>
+
+            <div class="detail">
+                <span class="detail-label">Email</span>
+                <span
+                    id="detailEmail"
+                    class="detail-value"
+                >
+                    user@maman.shop
+                </span>
+            </div>
+
+            <div class="detail">
+                <span class="detail-label">Delivery PIN</span>
+                <span
+                    id="detailPin"
+                    class="detail-value"
+                >
+                    Not set
+                </span>
+            </div>
+
+        </section>
+
+        <section class="logout-box">
+
+            <h2>Sign Out</h2>
+
+            <p style="color:#666;margin-top:8px">
+                Sign out of your MaMan account on this device.
+            </p>
+
+            <button
+                class="logout-button"
+                onclick="logout()"
+            >
+                🚪 Log Out
+            </button>
+
+        </section>
+
+    </div>
+</main>
+
+<!-- ORDERS -->
+
+<main id="ordersPage" class="page hidden">
+
+    <div class="container">
+
+        <h1 class="page-title">
+            Your Orders
+        </h1>
+
+        <div id="ordersContainer"></div>
+
+    </div>
+
+</main>
+
+<!-- WISHLIST -->
+
+<main id="wishlistPage" class="page hidden">
+
+    <div class="container">
+
+        <h1 class="page-title">
+            Your Wishlist
+        </h1>
+
+        <div
+            id="wishlistGrid"
+            class="product-grid"
+        ></div>
+
+    </div>
+
+</main>
+
+<!-- CHECKOUT -->
+
+<main id="checkoutPage" class="checkout-page page hidden">
+
+    <div class="checkout-container">
+
+        <h1 class="page-title">
+            Checkout
+        </h1>
+
+        <section class="checkout-box">
+
+            <h3>1. Delivery Address</h3>
+
+            <input
+                id="checkoutName"
+                placeholder="Full name"
+            >
+
+            <input
+                id="checkoutAddress"
+                placeholder="Address"
+            >
+
+            <input
+                id="checkoutCity"
+                placeholder="City"
+            >
+
+            <input
+                id="checkoutPin"
+                placeholder="PIN code"
+                inputmode="numeric"
+            >
+
+        </section>
+
+        <section class="checkout-box">
+
+            <h3>2. Payment Method</h3>
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="cod"
+                    checked
+                    onchange="updatePaymentFields()"
+                >
+
+                💵 Cash on Delivery
+
+            </label>
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="upi"
+                    onchange="updatePaymentFields()"
+                >
+
+                📱 UPI
+
+            </label>
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="card"
+                    onchange="updatePaymentFields()"
+                >
+
+                💳 Credit / Debit Card
+
+            </label>
+
+            <div
+                id="upiFields"
+                class="payment-extra hidden"
+            >
+
+                <strong>UPI Payment</strong>
+
+                <input
+                    id="upiId"
+                    placeholder="Enter UPI ID e.g. name@upi"
+                >
+
+            
+
+            </div>
+
+            <div
+                id="cardFields"
+                class="payment-extra hidden"
+            >
+
+                <strong>Card Payment</strong>
+
+                <input
+                    id="cardNumber"
+                    placeholder="Card number"
+                    maxlength="19"
+                    inputmode="numeric"
+                >
+
+                <input
+                    id="cardName"
+                    placeholder="Name on card"
+                >
+
+                <div style="display:flex;gap:10px">
+
+                    <input
+                        id="cardExpiry"
+                        placeholder="MM/YY"
+                        maxlength="5"
+                    >
+
+                    <input
+                        id="cardCVV"
+                        placeholder="CVV"
+                        maxlength="4"
+                        type="password"
+                    >
+
+                </div>
+
+                <p class="security-note">
+                    🔒 This is a front-end demo and does not process real card payments.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="checkout-box">
+
+            <h3>3. Order Summary</h3>
+
+            <div id="checkoutSummary"></div>
+
+            <hr style="margin:20px 0">
+
+            <h2>
+                Total:
+                ₹<span id="checkoutTotal">0</span>
+            </h2>
+
+        </section>
+
+        <button
+            class="primary"
+            style="width:100%;padding:15px;font-size:17px"
+            onclick="placeOrder()"
+        >
+            Place Your Order
+        </button>
+
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div
+        class="back-top"
+        onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    >
+        Back to top
+    </div>
+
+    <div class="footer-grid">
+
+        <div>
+            <h3>Get to Know Us</h3>
+            <p>About MaMan</p>
+            <p>Careers</p>
+            <p>Press</p>
+        </div>
+
+        <div>
+            <h3>Make Money With Us</h3>
+            <p>Sell on MaMan</p>
+            <p>Affiliate Program</p>
+            <p>Advertise Products</p>
+        </div>
+
+        <div>
+            <h3>Let Us Help You</h3>
+            <p onclick="navigate('account')">
+                Your Account
+            </p>
+            <p onclick="navigate('orders')">
+                Your Orders
+            </p>
+            <p onclick="setAddress()">
+                Delivery Address
+            </p>
+        </div>
+
+        <div>
+            <h3>MaMan</h3>
+            <p>Privacy</p>
+            <p>Terms</p>
+            <p>Cookies</p>
+            <p>Help</p>
+        </div>
+
+    </div>
+</footer>
+
+<!-- CART -->
+
+<div
+    id="overlay"
+    class="overlay hidden"
+    onclick="closeCart()"
+></div>
+
+<aside
+    id="cartDrawer"
+    class="cart-drawer hidden"
+>
+
+    <div class="drawer-head">
+
+        <h2>Shopping Cart</h2>
+
+        <button
+            class="close"
+            onclick="closeCart()"
+        >
+            ×
+        </button>
+
+    </div>
+
+    <div
+        id="cartItems"
+        class="cart-items"
+    ></div>
+
+    <div class="cart-footer">
+
+        <div class="subtotal">
+            Subtotal:
+            <strong id="subtotal">₹0</strong>
+        </div>
+
+        <button
+            class="checkout"
+            onclick="checkout()"
+        >
+            Proceed to Checkout
+        </button>
+
+    </div>
+
+</aside>
+
+<div id="toast" class="toast"></div>
+<footer>
+    <img src="Untitled.png" alt="">
+</footer>
+<script src="Script.js"></script>
+
+</body>
+</html>
